@@ -7,6 +7,7 @@ This project demonstrates the basic CRUD operations (Create, Read, Update, Delet
 First, we create and use a database:
 
 use library;
+
 db.createCollection("books");
 
 use library creates (if not existing) and switches to the database.
@@ -26,13 +27,21 @@ Each document represents a book with details like title, author, and year of pub
 Get all books:
 
 db.books.find();
+
 Retrieves every document in the collection.
+
 Find books by a specific author:
+
 db.books.find({ author: "J.K. Rowling" });
+
 Filters documents where the author matches exactly.
+
 Find the oldest published book:
+
 db.books.find()
+
 .sort({ published_year: 1 })
+
 .limit(1);
 
 Explanation:
@@ -57,6 +66,7 @@ updateOne() updates only the first matching document.
 $set changes only the specified field without affecting others.
 
 Update all books:
+
 db.books.updateMany(
 
   {},
@@ -75,8 +85,11 @@ Adds a new field genre to every book in the collection.
 Delete one book:
 
 db.books.deleteOne({ title: "1984" });
+
 Removes a single matching document.
+
 Delete multiple books:
+
 db.books.deleteMany({ published_year: { $lt: 2000 } });
 
 Explanation:
@@ -89,21 +102,31 @@ Deletes all books published before the year 2000.
 Get 3 latest books:
 
 db.books.find()
+
 .sort({ published_year: -1 })
+
 .limit(3);
 
 Explanation:
 
 -1 sorts in descending order (newest first).
 limit(3) returns the top 3 newest books.
+
 Search using keywords:
+
 db.books.find({
+
 db.books.find({
+
 db.books.find({
   $or: [
+  
     { title: /MongoDB/i },
+    
     { title: /NoSQL/i }
+    
   ]
+  
 });
 
 Explanation:
