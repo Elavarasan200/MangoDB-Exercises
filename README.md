@@ -45,7 +45,9 @@ limit(1) returns only the first result, which is the earliest published book.
 Update a single book:
 
 db.books.updateOne(
+
   { title: "The Catcher in the Rye" },
+  
   { $set: { published_year: 2025 } }
 );
 
@@ -56,8 +58,11 @@ $set changes only the specified field without affecting others.
 
 Update all books:
 db.books.updateMany(
+
   {},
+  
   { $set: { genre: "Mystery" } }
+  
 );
 
 Explanation:
